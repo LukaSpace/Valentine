@@ -15,13 +15,35 @@ export class ProposalPageComponent implements OnInit {
   noButtonVisible = true;
   isExploding = false;
   
+  // Floating hearts for background
+  floatingHearts: any[] = [];
+  
   constructor(private router: Router) {}
   
   ngOnInit(): void {
+    this.createFloatingHearts();
+    
     // Show proposal text after animation (boy meets girl)
     setTimeout(() => {
       this.showProposalText = true;
-    }, 9000); // Adjust based on walking animation duration
+    }, 9000);
+  }
+  
+  createFloatingHearts(): void {
+    // Create 20 floating hearts with random positions and animations
+    for (let i = 0; i < 20; i++) {
+      this.floatingHearts.push({
+        style: {
+          left: `${Math.random() * 100}%`,
+          top: `${Math.random() * 100}%`,
+          width: `${20 + Math.random() * 40}px`,
+          height: `${20 + Math.random() * 40}px`,
+          animation: `float ${6 + Math.random() * 10}s ease-in-out infinite`,
+          animationDelay: `${Math.random() * 5}s`,
+          color: `rgba(255, ${100 + Math.random() * 155}, ${150 + Math.random() * 105}, 0.1)`
+        }
+      });
+    }
   }
   
   onYesClick(): void {
@@ -44,14 +66,13 @@ export class ProposalPageComponent implements OnInit {
   }
   
   moveNoButtonRandomly(): void {
-    const maxX = window.innerWidth - 120; // Button width
-    const maxY = window.innerHeight - 60; // Button height
+    const maxX = window.innerWidth - 200; // Button width
+    const maxY = window.innerHeight - 100; // Button height
     
     this.noButtonPosition.x = Math.floor(Math.random() * maxX);
     this.noButtonPosition.y = Math.floor(Math.random() * maxY);
   }
   
-  // Make button move when cursor approaches (optional feature)
   @HostListener('mousemove', ['$event'])
   onMouseMove(event: MouseEvent): void {
     if (this.noButtonClicks < 3 && this.noButton && this.noButtonVisible) {
@@ -65,8 +86,8 @@ export class ProposalPageComponent implements OnInit {
         Math.pow(event.clientY - buttonCenterY, 2)
       );
       
-      // If cursor is within 100px of the button, move it
-      if (distance < 100) {
+      // If cursor is within 150px of the button, move it
+      if (distance < 150) {
         this.moveNoButtonRandomly();
       }
     }

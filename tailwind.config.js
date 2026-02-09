@@ -12,19 +12,24 @@ module.exports = {
         'fade-in': 'fadeIn 1s ease-out forwards',
         'explode': 'explode 0.5s ease-out forwards',
         'float': 'float 3s ease-in-out infinite',
+        'ping': 'ping 1.5s cubic-bezier(0, 0, 0.2, 1) infinite',
+        'pulse': 'pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+        'spin-slow': 'spin 3s linear infinite',
       },
       keyframes: {
         walk: {
           '0%': { transform: 'translateX(-100px)' },
-          '100%': { transform: 'translateX(0)' },
+          '100%': { transform: 'translateX(calc(50vw - 200px))' },
         },
         bounce: {
           '0%, 100%': { transform: 'translateY(0)' },
-          '50%': { transform: 'translateY(-20px)' },
+          '50%': { transform: 'translateY(-25px)' },
         },
         heartbeat: {
           '0%': { transform: 'scale(1)' },
-          '50%': { transform: 'scale(1.1)' },
+          '25%': { transform: 'scale(1.1)' },
+          '50%': { transform: 'scale(1)' },
+          '75%': { transform: 'scale(1.05)' },
           '100%': { transform: 'scale(1)' },
         },
         fadeIn: {
@@ -33,11 +38,12 @@ module.exports = {
         },
         explode: {
           '0%': { transform: 'scale(1)', opacity: '1' },
+          '50%': { transform: 'scale(1.5)', opacity: '0.5' },
           '100%': { transform: 'scale(2)', opacity: '0' },
         },
         float: {
-          '0%, 100%': { transform: 'translateY(0)' },
-          '50%': { transform: 'translateY(-10px)' },
+          '0%, 100%': { transform: 'translateY(0) rotate(0deg)' },
+          '50%': { transform: 'translateY(-20px) rotate(5deg)' },
         },
       },
     },

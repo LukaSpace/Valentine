@@ -1,54 +1,146 @@
 <div class="relative min-h-screen bg-white overflow-hidden">
-  <!-- Animated background with boy and girl -->
-  <div class="absolute inset-0 z-0">
-    <!-- Background elements -->
-    <div class="absolute top-10 left-1/4 w-16 h-16 rounded-full border-2 border-black"></div>
-    <div class="absolute top-20 right-1/3 w-12 h-12 rounded-full border-2 border-black"></div>
-    <div class="absolute bottom-20 left-1/3 w-10 h-10 rounded-full border-2 border-black"></div>
+  <!-- Animated background with floating hearts -->
+  <div class="absolute inset-0 z-0 overflow-hidden">
+    <!-- Floating hearts in background -->
+    <div *ngFor="let heart of floatingHearts; let i = index" 
+         [ngStyle]="heart.style"
+         class="absolute opacity-10">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-full h-full">
+        <path d="M11.645 20.91l-.007-.003-.022-.012a15.247 15.247 0 01-.383-.218 25.18 25.18 0 01-4.244-3.17C4.688 15.36 2.25 12.174 2.25 8.25 2.25 5.322 4.714 3 7.688 3A5.5 5.5 0 0112 5.052 5.5 5.5 0 0116.313 3c2.973 0 5.437 2.322 5.437 5.25 0 3.925-2.438 7.111-4.739 9.256a25.175 25.175 0 01-4.244 3.17 15.247 15.247 0 01-.383.219l-.022.012-.007.004-.003.001a.752.752 0 01-.704 0l-.003-.001z" />
+      </svg>
+    </div>
     
-    <!-- Ground line -->
-    <div class="absolute bottom-32 left-0 right-0 h-1 bg-black"></div>
+    <!-- Ground line with grass -->
+    <div class="absolute bottom-32 left-0 right-0">
+      <div class="h-2 bg-gradient-to-r from-green-800 to-green-600"></div>
+      <div class="h-6 bg-gradient-to-r from-green-600 to-green-400"></div>
+    </div>
     
     <!-- Girl (stationary) -->
     <div class="absolute bottom-32 right-1/4 transform -translate-x-1/2 z-10">
-      <!-- Girl SVG -->
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 200" class="w-40 h-80">
-        <!-- Girl's dress -->
-        <path d="M50,120 C30,120 20,160 20,200 L80,200 C80,160 70,120 50,120 Z" fill="none" stroke="black" stroke-width="2"/>
-        <!-- Girl's body -->
-        <circle cx="50" cy="50" r="20" fill="none" stroke="black" stroke-width="2"/>
-        <!-- Girl's arms -->
-        <path d="M30,70 L10,100" stroke="black" stroke-width="2"/>
-        <path d="M70,70 L90,100" stroke="black" stroke-width="2"/>
-        <!-- Girl's legs -->
-        <path d="M50,200 L40,250" stroke="black" stroke-width="2"/>
-        <path d="M50,200 L60,250" stroke="black" stroke-width="2"/>
+      <!-- Girl SVG with detailed features -->
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 220" class="w-48 h-88">
         <!-- Girl's hair -->
-        <path d="M30,30 Q50,10 70,30" fill="none" stroke="black" stroke-width="2"/>
+        <path d="M60,20 C40,15 20,25 20,40 C20,60 40,70 60,75 C80,70 100,60 100,40 C100,25 80,15 60,20 Z" 
+              fill="#333" stroke="#222" stroke-width="1"/>
+        
+        <!-- Girl's face -->
+        <circle cx="60" cy="55" r="25" fill="#FFE0BD" stroke="#D4A574" stroke-width="1.5"/>
+        
+        <!-- Girl's eyes -->
+        <ellipse cx="50" cy="50" rx="3" ry="4" fill="#1a1a1a"/>
+        <ellipse cx="70" cy="50" rx="3" ry="4" fill="#1a1a1a"/>
+        
+        <!-- Eye highlights -->
+        <circle cx="51" cy="49" r="1" fill="white"/>
+        <circle cx="71" cy="49" r="1" fill="white"/>
+        
+        <!-- Girl's eyebrows -->
+        <path d="M45,42 Q50,40 55,42" fill="none" stroke="#333" stroke-width="1.5"/>
+        <path d="M65,42 Q70,40 75,42" fill="none" stroke="#333" stroke-width="1.5"/>
+        
+        <!-- Girl's nose -->
+        <path d="M60,55 Q62,60 60,62" fill="none" stroke="#D4A574" stroke-width="1"/>
+        
+        <!-- Girl's smile -->
+        <path d="M50,65 Q60,75 70,65" fill="none" stroke="#E75480" stroke-width="2"/>
+        
+        <!-- Girl's body -->
+        <path d="M60,80 L40,120 L50,160 L70,160 L80,120 L60,80 Z" 
+              fill="#FF69B4" stroke="#D44D8C" stroke-width="1.5"/>
+        
+        <!-- Girl's arms -->
+        <path d="M40,120 L20,100" stroke="#FFE0BD" stroke-width="4" stroke-linecap="round"/>
+        <path d="M80,120 L100,100" stroke="#FFE0BD" stroke-width="4" stroke-linecap="round"/>
+        
+        <!-- Hands -->
+        <circle cx="20" cy="100" r="4" fill="#FFE0BD" stroke="#D4A574" stroke-width="1"/>
+        <circle cx="100" cy="100" r="4" fill="#FFE0BD" stroke="#D4A574" stroke-width="1"/>
+        
+        <!-- Girl's legs -->
+        <path d="M50,160 L45,210" stroke="#FFE0BD" stroke-width="4" stroke-linecap="round"/>
+        <path d="M70,160 L75,210" stroke="#FFE0BD" stroke-width="4" stroke-linecap="round"/>
+        
+        <!-- Shoes -->
+        <ellipse cx="45" cy="212" rx="6" ry="3" fill="#333"/>
+        <ellipse cx="75" cy="212" rx="6" ry="3" fill="#333"/>
+        
+        <!-- Dress pattern -->
+        <circle cx="60" cy="110" r="8" fill="white" opacity="0.3"/>
+        <circle cx="45" cy="100" r="4" fill="white" opacity="0.3"/>
+        <circle cx="75" cy="100" r="4" fill="white" opacity="0.3"/>
       </svg>
     </div>
     
     <!-- Boy (walking animation) -->
     <div class="absolute bottom-32 left-0 transform -translate-x-full animate-walk z-10">
-      <!-- Boy SVG -->
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 200" class="w-40 h-80">
-        <!-- Boy's body -->
-        <rect x="40" y="70" width="20" height="50" fill="none" stroke="black" stroke-width="2"/>
-        <!-- Boy's head -->
-        <circle cx="50" cy="50" r="20" fill="none" stroke="black" stroke-width="2"/>
-        <!-- Boy's arms (holding paper) -->
-        <path d="M40,70 L20,100" stroke="black" stroke-width="2"/>
-        <path d="M60,70 L80,100" stroke="black" stroke-width="2"/>
-        <!-- Boy's legs -->
-        <path d="M50,120 L40,170" stroke="black" stroke-width="2"/>
-        <path d="M50,120 L60,170" stroke="black" stroke-width="2"/>
-        <!-- Paper with heart -->
+      <!-- Boy SVG with detailed features -->
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 220" class="w-48 h-88">
+        <!-- Boy's hair -->
+        <path d="M60,20 C70,10 90,15 90,30 C90,45 75,50 60,55 C45,50 30,45 30,30 C30,15 50,10 60,20 Z" 
+              fill="#8B4513" stroke="#654321" stroke-width="1"/>
+        
+        <!-- Boy's face -->
+        <circle cx="60" cy="55" r="25" fill="#F5CBA7" stroke="#D4A574" stroke-width="1.5"/>
+        
+        <!-- Boy's eyes -->
+        <ellipse cx="50" cy="50" rx="3" ry="4" fill="#1a1a1a"/>
+        <ellipse cx="70" cy="50" rx="3" ry="4" fill="#1a1a1a"/>
+        
+        <!-- Eye highlights -->
+        <circle cx="51" cy="49" r="1" fill="white"/>
+        <circle cx="71" cy="49" r="1" fill="white"/>
+        
+        <!-- Boy's eyebrows -->
+        <path d="M45,42 Q50,38 55,42" fill="none" stroke="#8B4513" stroke-width="2"/>
+        <path d="M65,42 Q70,38 75,42" fill="none" stroke="#8B4513" stroke-width="2"/>
+        
+        <!-- Boy's nose -->
+        <path d="M60,55 Q63,60 60,63" fill="none" stroke="#D4A574" stroke-width="1"/>
+        
+        <!-- Boy's smile -->
+        <path d="M50,65 Q60,72 70,65" fill="none" stroke="#333" stroke-width="2"/>
+        
+        <!-- Boy's body - shirt -->
+        <path d="M60,80 L40,120 L45,160 L75,160 L80,120 L60,80 Z" 
+              fill="#4169E1" stroke="#2E4C9E" stroke-width="1.5"/>
+        
+        <!-- Boy's collar -->
+        <path d="M55,80 L65,80 L70,85 L50,85 Z" fill="white" stroke="#2E4C9E" stroke-width="1"/>
+        
+        <!-- Boy's arms -->
+        <path d="M40,120 L25,90" stroke="#F5CBA7" stroke-width="4" stroke-linecap="round"/>
+        <path d="M80,120 L95,90" stroke="#F5CBA7" stroke-width="4" stroke-linecap="round"/>
+        
+        <!-- Hands -->
+        <circle cx="25" cy="90" r="4" fill="#F5CBA7" stroke="#D4A574" stroke-width="1"/>
+        <circle cx="95" cy="90" r="4" fill="#F5CBA7" stroke="#D4A574" stroke-width="1"/>
+        
+        <!-- Boy's legs - pants -->
+        <path d="M45,160 L40,210" stroke="#228B22" stroke-width="5" stroke-linecap="round"/>
+        <path d="M75,160 L80,210" stroke="#228B22" stroke-width="5" stroke-linecap="round"/>
+        
+        <!-- Shoes -->
+        <ellipse cx="40" cy="212" rx="7" ry="4" fill="#333"/>
+        <ellipse cx="80" cy="212" rx="7" ry="4" fill="#333"/>
+        
+        <!-- Paper with heart (only shown during walk) -->
         <g *ngIf="!showProposalText">
-          <rect x="70" y="80" width="40" height="30" rx="5" fill="white" stroke="black" stroke-width="1"/>
-          <!-- Heart with question mark -->
-          <path d="M85,95 Q90,85 95,95 Q100,100 95,105 Q90,110 85,105 Q80,110 75,105 Q70,100 75,95 Q80,85 85,95 Z" 
-                fill="red" stroke="red" stroke-width="1"/>
-          <text x="90" y="103" text-anchor="middle" fill="white" font-size="8" font-weight="bold">?</text>
+          <!-- Paper -->
+          <rect x="85" y="70" width="50" height="40" rx="8" 
+                fill="white" stroke="#333" stroke-width="1.5" 
+                filter="drop-shadow(2px 2px 4px rgba(0,0,0,0.2))"/>
+          
+          <!-- Heart on paper -->
+          <path d="M105,90 C105,85 110,85 110,90 C110,95 107,98 105,100 C103,98 100,95 100,90 C100,85 105,85 105,90 Z" 
+                fill="#ff3366" stroke="#cc0044" stroke-width="1.5"/>
+          
+          <!-- Question mark -->
+          <text x="110" y="96" text-anchor="middle" fill="white" 
+                font-size="12" font-weight="bold" font-family="Arial">?</text>
+          
+          <!-- Paper fold corner -->
+          <path d="M130,70 L135,75 L130,80 Z" fill="#f0f0f0" stroke="#ccc" stroke-width="1"/>
         </g>
       </svg>
     </div>
@@ -56,20 +148,30 @@
   
   <!-- Proposal text and buttons (shown after animation) -->
   <div *ngIf="showProposalText" class="absolute inset-0 flex flex-col items-center justify-center z-20 animate-fade-in">
-    <div class="text-center mb-12">
-      <h1 class="text-5xl md:text-6xl font-bold text-black mb-4">Zostaniesz moją walentynką?</h1>
-      <p class="text-xl text-gray-700">(Will you be my Valentine?)</p>
+    <div class="text-center mb-12 px-4">
+      <h1 class="text-5xl md:text-7xl font-bold text-black mb-6 font-serif tracking-wide">
+        Zostaniesz moją walentynką?
+      </h1>
+      <p class="text-2xl md:text-3xl text-gray-700 italic">
+        Will you be my Valentine?
+      </p>
     </div>
     
-    <div class="flex flex-col md:flex-row gap-8 items-center">
+    <div class="flex flex-col md:flex-row gap-10 items-center">
       <!-- Yes Button -->
       <button 
         (click)="onYesClick()"
-        class="relative px-12 py-6 bg-red-600 text-white text-3xl font-bold rounded-full shadow-lg hover:bg-red-700 hover:scale-105 transition-all duration-300 animate-heartbeat flex items-center justify-center gap-3">
-        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" viewBox="0 0 20 20" fill="currentColor">
-          <path fill-rule="evenodd" d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z" clip-rule="evenodd" />
-        </svg>
-        <span>Tak (Yes)</span>
+        class="relative px-16 py-8 bg-gradient-to-r from-red-500 to-pink-600 text-white text-4xl font-bold rounded-full shadow-xl hover:from-red-600 hover:to-pink-700 hover:scale-110 transition-all duration-300 animate-heartbeat flex items-center justify-center gap-4 group">
+        <div class="relative">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 group-hover:scale-125 transition-transform duration-300" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M11.645 20.91l-.007-.003-.022-.012a15.247 15.247 0 01-.383-.218 25.18 25.18 0 01-4.244-3.17C4.688 15.36 2.25 12.174 2.25 8.25 2.25 5.322 4.714 3 7.688 3A5.5 5.5 0 0112 5.052 5.5 5.5 0 0116.313 3c2.973 0 5.437 2.322 5.437 5.25 0 3.925-2.438 7.111-4.739 9.256a25.175 25.175 0 01-4.244 3.17 15.247 15.247 0 01-.383.219l-.022.012-.007.004-.003.001a.752.752 0 01-.704 0l-.003-.001z" />
+          </svg>
+          <div class="absolute -top-1 -right-1 w-6 h-6 bg-white rounded-full flex items-center justify-center">
+            <span class="text-red-500 text-lg font-bold">✓</span>
+          </div>
+        </div>
+        <span class="text-shadow">Tak (Yes)</span>
+        <div class="absolute -inset-1 bg-gradient-to-r from-red-400 to-pink-500 rounded-full blur opacity-30 group-hover:opacity-50 transition-opacity duration-300"></div>
       </button>
       
       <!-- No Button -->
@@ -82,23 +184,28 @@
           'position': noButtonClicks > 0 ? 'fixed' : 'relative'
         }"
         [class.animate-explode]="isExploding"
-        class="px-12 py-6 bg-white border-2 border-black text-black text-3xl font-bold rounded-full shadow-lg hover:bg-gray-100 hover:scale-105 transition-all duration-300 flex items-center justify-center gap-3">
-        <div class="w-8 h-8 rounded-full border-2 border-black flex items-center justify-center">
-          <span class="text-xl">✗</span>
+        class="px-16 py-8 bg-gradient-to-r from-gray-50 to-gray-100 border-4 border-gray-300 text-gray-900 text-4xl font-bold rounded-full shadow-xl hover:bg-gray-200 hover:scale-110 transition-all duration-300 flex items-center justify-center gap-4 group relative">
+        <div class="w-12 h-12 rounded-full border-4 border-gray-800 flex items-center justify-center bg-white group-hover:rotate-90 transition-transform duration-300">
+          <span class="text-2xl font-black">✗</span>
         </div>
-        <span>Nie (No)</span>
+        <span class="text-shadow">Nie (No)</span>
+        <div class="absolute -inset-1 bg-gradient-to-r from-gray-300 to-gray-400 rounded-full blur opacity-30 group-hover:opacity-50 transition-opacity duration-300"></div>
       </button>
     </div>
     
     <!-- Click counter hint -->
-    <div *ngIf="noButtonClicks > 0 && noButtonClicks < 3" class="mt-8 text-lg text-gray-600 animate-bounce">
-      The "No" button has been clicked {{ noButtonClicks }} time{{ noButtonClicks > 1 ? 's' : '' }}. 
-      {{ 3 - noButtonClicks }} more click{{ (3 - noButtonClicks) > 1 ? 's' : '' }} and it will explode!
+    <div *ngIf="noButtonClicks > 0 && noButtonClicks < 3" 
+         class="mt-10 text-xl text-gray-700 animate-pulse bg-white/80 backdrop-blur-sm px-6 py-3 rounded-full shadow-lg">
+      <span class="font-bold text-red-500">{{ 3 - noButtonClicks }}</span> more click{{ (3 - noButtonClicks) > 1 ? 's' : '' }} and the "No" button will explode!
     </div>
   </div>
   
   <!-- Instructions -->
-  <div class="absolute bottom-4 left-0 right-0 text-center text-gray-500 text-sm">
-    <p>Watch the boy walk to the girl with his Valentine's proposal...</p>
+  <div class="absolute bottom-6 left-0 right-0 text-center z-10">
+    <div class="inline-block bg-white/90 backdrop-blur-sm px-6 py-3 rounded-full shadow-lg">
+      <p class="text-gray-700 text-lg font-medium">
+        💖 Watch the boy walk to the girl with his Valentine's proposal...
+      </p>
+    </div>
   </div>
 </div>

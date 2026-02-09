@@ -6,10 +6,77 @@ body {
   margin: 0;
   padding: 0;
   overflow-x: hidden;
-  font-family: 'Comic Sans MS', 'Chalkboard SE', 'Arial Rounded MT Bold', sans-serif;
+  font-family: 'Segoe UI', 'Arial Rounded MT Bold', 'Comic Sans MS', sans-serif;
 }
 
 /* Smooth transitions */
 * {
   transition: all 0.3s ease;
+}
+
+/* Text shadow for better readability */
+.text-shadow {
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #ff3366;
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #ff0066;
+}
+
+/* Custom animation for the walking boy */
+:host ::ng-deep .animate-walk {
+  animation: walk 10s linear forwards;
+}
+
+@keyframes walk {
+  0% {
+    transform: translateX(-100px);
+  }
+  100% {
+    transform: translateX(calc(50vw - 240px));
+  }
+}
+
+/* Explosion animation with particles */
+:host ::ng-deep .animate-explode {
+  animation: explode 0.5s ease-out forwards;
+}
+
+@keyframes explode {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.5);
+    opacity: 0.5;
+  }
+  100% {
+    transform: scale(2);
+    opacity: 0;
+  }
+}
+
+/* Float animation for hearts */
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-20px) rotate(5deg);
+  }
 }
