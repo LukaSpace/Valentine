@@ -1,0 +1,21 @@
+import { ComponentFixture, TestBed } from '@angular/core/testing';
+
+import { ProposalPageComponent } from './proposal-page.component';
+
+describe('ProposalPageComponent', () => {
+  let component: ProposalPageComponent;
+  let fixture: ComponentFixture<ProposalPageComponent>;
+
+  beforeEach(() => {
+    TestBed.configureTestingModule({
+      declarations: [ProposalPageComponent]
+    });
+    fixture = TestBed.createComponent(ProposalPageComponent);
+    component = fixture.componentInstance;
+    fixture.detectChanges();
+  });
+
+  it('should create', () => {
+    expect(component).toBeTruthy();
+  });
+});

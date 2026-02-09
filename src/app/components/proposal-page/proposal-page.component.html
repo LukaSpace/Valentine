@@ -1,0 +1,104 @@
+<div class="relative min-h-screen bg-white overflow-hidden">
+  <!-- Animated background with boy and girl -->
+  <div class="absolute inset-0 z-0">
+    <!-- Background elements -->
+    <div class="absolute top-10 left-1/4 w-16 h-16 rounded-full border-2 border-black"></div>
+    <div class="absolute top-20 right-1/3 w-12 h-12 rounded-full border-2 border-black"></div>
+    <div class="absolute bottom-20 left-1/3 w-10 h-10 rounded-full border-2 border-black"></div>
+    
+    <!-- Ground line -->
+    <div class="absolute bottom-32 left-0 right-0 h-1 bg-black"></div>
+    
+    <!-- Girl (stationary) -->
+    <div class="absolute bottom-32 right-1/4 transform -translate-x-1/2 z-10">
+      <!-- Girl SVG -->
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 200" class="w-40 h-80">
+        <!-- Girl's dress -->
+        <path d="M50,120 C30,120 20,160 20,200 L80,200 C80,160 70,120 50,120 Z" fill="none" stroke="black" stroke-width="2"/>
+        <!-- Girl's body -->
+        <circle cx="50" cy="50" r="20" fill="none" stroke="black" stroke-width="2"/>
+        <!-- Girl's arms -->
+        <path d="M30,70 L10,100" stroke="black" stroke-width="2"/>
+        <path d="M70,70 L90,100" stroke="black" stroke-width="2"/>
+        <!-- Girl's legs -->
+        <path d="M50,200 L40,250" stroke="black" stroke-width="2"/>
+        <path d="M50,200 L60,250" stroke="black" stroke-width="2"/>
+        <!-- Girl's hair -->
+        <path d="M30,30 Q50,10 70,30" fill="none" stroke="black" stroke-width="2"/>
+      </svg>
+    </div>
+    
+    <!-- Boy (walking animation) -->
+    <div class="absolute bottom-32 left-0 transform -translate-x-full animate-walk z-10">
+      <!-- Boy SVG -->
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 200" class="w-40 h-80">
+        <!-- Boy's body -->
+        <rect x="40" y="70" width="20" height="50" fill="none" stroke="black" stroke-width="2"/>
+        <!-- Boy's head -->
+        <circle cx="50" cy="50" r="20" fill="none" stroke="black" stroke-width="2"/>
+        <!-- Boy's arms (holding paper) -->
+        <path d="M40,70 L20,100" stroke="black" stroke-width="2"/>
+        <path d="M60,70 L80,100" stroke="black" stroke-width="2"/>
+        <!-- Boy's legs -->
+        <path d="M50,120 L40,170" stroke="black" stroke-width="2"/>
+        <path d="M50,120 L60,170" stroke="black" stroke-width="2"/>
+        <!-- Paper with heart -->
+        <g *ngIf="!showProposalText">
+          <rect x="70" y="80" width="40" height="30" rx="5" fill="white" stroke="black" stroke-width="1"/>
+          <!-- Heart with question mark -->
+          <path d="M85,95 Q90,85 95,95 Q100,100 95,105 Q90,110 85,105 Q80,110 75,105 Q70,100 75,95 Q80,85 85,95 Z" 
+                fill="red" stroke="red" stroke-width="1"/>
+          <text x="90" y="103" text-anchor="middle" fill="white" font-size="8" font-weight="bold">?</text>
+        </g>
+      </svg>
+    </div>
+  </div>
+  
+  <!-- Proposal text and buttons (shown after animation) -->
+  <div *ngIf="showProposalText" class="absolute inset-0 flex flex-col items-center justify-center z-20 animate-fade-in">
+    <div class="text-center mb-12">
+      <h1 class="text-5xl md:text-6xl font-bold text-black mb-4">Zostaniesz moją walentynką?</h1>
+      <p class="text-xl text-gray-700">(Will you be my Valentine?)</p>
+    </div>
+    
+    <div class="flex flex-col md:flex-row gap-8 items-center">
+      <!-- Yes Button -->
+      <button 
+        (click)="onYesClick()"
+        class="relative px-12 py-6 bg-red-600 text-white text-3xl font-bold rounded-full shadow-lg hover:bg-red-700 hover:scale-105 transition-all duration-300 animate-heartbeat flex items-center justify-center gap-3">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" viewBox="0 0 20 20" fill="currentColor">
+          <path fill-rule="evenodd" d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z" clip-rule="evenodd" />
+        </svg>
+        <span>Tak (Yes)</span>
+      </button>
+      
+      <!-- No Button -->
+      <button 
+        *ngIf="noButtonVisible"
+        #noButton
+        (click)="onNoClick()"
+        [ngStyle]="{
+          'transform': 'translate(' + noButtonPosition.x + 'px, ' + noButtonPosition.y + 'px)',
+          'position': noButtonClicks > 0 ? 'fixed' : 'relative'
+        }"
+        [class.animate-explode]="isExploding"
+        class="px-12 py-6 bg-white border-2 border-black text-black text-3xl font-bold rounded-full shadow-lg hover:bg-gray-100 hover:scale-105 transition-all duration-300 flex items-center justify-center gap-3">
+        <div class="w-8 h-8 rounded-full border-2 border-black flex items-center justify-center">
+          <span class="text-xl">✗</span>
+        </div>
+        <span>Nie (No)</span>
+      </button>
+    </div>
+    
+    <!-- Click counter hint -->
+    <div *ngIf="noButtonClicks > 0 && noButtonClicks < 3" class="mt-8 text-lg text-gray-600 animate-bounce">
+      The "No" button has been clicked {{ noButtonClicks }} time{{ noButtonClicks > 1 ? 's' : '' }}. 
+      {{ 3 - noButtonClicks }} more click{{ (3 - noButtonClicks) > 1 ? 's' : '' }} and it will explode!
+    </div>
+  </div>
+  
+  <!-- Instructions -->
+  <div class="absolute bottom-4 left-0 right-0 text-center text-gray-500 text-sm">
+    <p>Watch the boy walk to the girl with his Valentine's proposal...</p>
+  </div>
+</div>
