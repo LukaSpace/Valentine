@@ -34,4 +34,14 @@ export class SuccessPageComponent implements OnInit {
       });
     }
   }
+
+  onPrintClick(): void {
+    this.isVoucherVisible = true;
+  }
+
+  isVoucherVisible = false;
+
+  toggleVoucher() {
+    this.isVoucherVisible = !this.isVoucherVisible;
+  }
 }

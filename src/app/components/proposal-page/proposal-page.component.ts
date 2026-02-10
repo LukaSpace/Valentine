@@ -50,7 +50,7 @@ export class ProposalPageComponent implements OnInit {
   
   createFloatingHearts(): void {
     // Create floating hearts with random positions and animations
-    const heartCount = this.isMobile ? 15 : 25;
+    const heartCount = this.isMobile ? 30 : 90;
     
     for (let i = 0; i < heartCount; i++) {
       this.floatingHearts.push({
@@ -61,7 +61,7 @@ export class ProposalPageComponent implements OnInit {
           height: `${this.isMobile ? 15 : 20 + Math.random() * 40}px`,
           animation: `float ${6 + Math.random() * 10}s ease-in-out infinite`,
           animationDelay: `${Math.random() * 5}s`,
-          color: `rgba(255, ${100 + Math.random() * 155}, ${150 + Math.random() * 105}, 0.8)`
+          color: `rgba(255, ${100 + Math.random() * 155}, ${150 + Math.random() * 105}, 1)`
         }
       });
     }
@@ -86,17 +86,8 @@ export class ProposalPageComponent implements OnInit {
     this.noButtonClicks++;
     
     if (this.noButtonClicks >= 3) {
-      // Explode the button
       this.isExploding = true;
-      setTimeout(() => {
-        this.noButtonVisible = false;
-        // Show a message after explosion
-        setTimeout(() => {
-          alert("The 'No' button has exploded! You have no choice but to click 'Yes'! 💖");
-        }, 300);
-      }, 500);
     } else {
-      // Move the button to a random position
       this.moveNoButtonRandomly();
     }
   }
@@ -112,8 +103,8 @@ export class ProposalPageComponent implements OnInit {
     const buttonWidth = button ? button.offsetWidth : 200;
     const buttonHeight = button ? button.offsetHeight : 90;
     
-    const maxX = rect.width - buttonWidth - 20;
-    const maxY = rect.height - buttonHeight - 20;
+    const maxX = (rect.width - buttonWidth) / 2;
+    const maxY = (rect.height - buttonHeight) / 2;
     
     // Ensure we stay within bounds
     const safeX = Math.max(0, Math.min(maxX, Math.random() * maxX));
