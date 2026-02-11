@@ -11,145 +11,53 @@
     </div>
     
     <!-- Ground line with grass -->
-    <div class="absolute bottom-32 left-0 right-0">
+    <div class="absolute bottom-28 left-0 right-0">
       <div class="h-1 md:h-2 bg-gradient-to-r from-green-800 to-green-600"></div>
-      <div class="h-4 md:h-6 bg-gradient-to-r from-green-600 to-green-400"></div>
+      <div class="h-14 md:h-14 bg-gradient-to-r from-green-600 to-green-400"></div>
     </div>
     
     <!-- Girl (stationary) - Fixed positioning -->
-    <div class="absolute bottom-32 right-[25%] transform translate-x-1/2 z-10">
+    <div class="absolute bottom-32 right-[30%] md:right-[42%] transform translate-x-1/2 z-10">
       <!-- Girl SVG with detailed features - scaled for mobile -->
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 220" 
-           [class]="isMobile ? 'w-32 h-64' : 'w-48 h-88'">
-        <!-- Girl's hair -->
-        <path d="M60,20 C40,15 20,25 20,40 C20,60 40,70 60,75 C80,70 100,60 100,40 C100,25 80,15 60,20 Z" 
-              fill="#333" stroke="#222" stroke-width="1"/>
-        
-        <!-- Girl's face -->
-        <circle cx="60" cy="55" r="25" fill="#FFE0BD" stroke="#D4A574" stroke-width="1.5"/>
-        
-        <!-- Girl's eyes -->
-        <ellipse cx="50" cy="50" rx="3" ry="4" fill="#1a1a1a"/>
-        <ellipse cx="70" cy="50" rx="3" ry="4" fill="#1a1a1a"/>
-        
-        <!-- Eye highlights -->
-        <circle cx="51" cy="49" r="1" fill="white"/>
-        <circle cx="71" cy="49" r="1" fill="white"/>
-        
-        <!-- Girl's eyebrows -->
-        <path d="M45,42 Q50,40 55,42" fill="none" stroke="#333" stroke-width="1.5"/>
-        <path d="M65,42 Q70,40 75,42" fill="none" stroke="#333" stroke-width="1.5"/>
-        
-        <!-- Girl's nose -->
-        <path d="M60,55 Q62,60 60,62" fill="none" stroke="#D4A574" stroke-width="1"/>
-        
-        <!-- Girl's smile -->
-        <path d="M50,65 Q60,75 70,65" fill="none" stroke="#E75480" stroke-width="2"/>
-        
-        <!-- Girl's body -->
-        <path d="M60,80 L40,120 L50,160 L70,160 L80,120 L60,80 Z" 
-              fill="#FF69B4" stroke="#D44D8C" stroke-width="1.5"/>
-        
-        <!-- Girl's arms -->
-        <path d="M40,120 L20,100" stroke="#FFE0BD" stroke-width="4" stroke-linecap="round"/>
-        <path d="M80,120 L100,100" stroke="#FFE0BD" stroke-width="4" stroke-linecap="round"/>
-        
-        <!-- Hands -->
-        <circle cx="20" cy="100" r="4" fill="#FFE0BD" stroke="#D4A574" stroke-width="1"/>
-        <circle cx="100" cy="100" r="4" fill="#FFE0BD" stroke="#D4A574" stroke-width="1"/>
-        
-        <!-- Girl's legs -->
-        <path d="M50,160 L45,210" stroke="#FFE0BD" stroke-width="4" stroke-linecap="round"/>
-        <path d="M70,160 L75,210" stroke="#FFE0BD" stroke-width="4" stroke-linecap="round"/>
-        
-        <!-- Shoes -->
-        <ellipse cx="45" cy="212" rx="6" ry="3" fill="#333"/>
-        <ellipse cx="75" cy="212" rx="6" ry="3" fill="#333"/>
-      </svg>
+      <img 
+        [src]="girlSvgPath" 
+        alt="Girl" 
+        class="h-auto"
+        [class.w-[100px]]="isMobile"
+        [class.w-[190px]]="!isMobile"
+      />
     </div>
     
     <!-- Boy (walking animation) - Adjusted for mobile -->
     <div class="absolute bottom-32 left-0 transform -translate-x-full animate-walk z-10"
-         [style.animation-duration]="isMobile ? '8s' : '10s'">
+         [style.animation-duration]="isMobile ? '4s' : '5s'">
       <!-- Boy SVG with detailed features - scaled for mobile -->
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 140 220"
-           [class]="isMobile ? 'w-32 h-64' : 'w-48 h-88'">
-        <!-- Boy's hair -->
-        <path d="M60,20 C70,10 90,15 90,30 C90,45 75,50 60,55 C45,50 30,45 30,30 C30,15 50,10 60,20 Z" 
-              fill="#8B4513" stroke="#654321" stroke-width="1"/>
-        
-        <!-- Boy's face -->
-        <circle cx="60" cy="55" r="25" fill="#F5CBA7" stroke="#D4A574" stroke-width="1.5"/>
-        
-        <!-- Boy's eyes -->
-        <ellipse cx="50" cy="50" rx="3" ry="4" fill="#1a1a1a"/>
-        <ellipse cx="70" cy="50" rx="3" ry="4" fill="#1a1a1a"/>
-        
-        <!-- Eye highlights -->
-        <circle cx="51" cy="49" r="1" fill="white"/>
-        <circle cx="71" cy="49" r="1" fill="white"/>
-        
-        <!-- Boy's eyebrows -->
-        <path d="M45,42 Q50,38 55,42" fill="none" stroke="#8B4513" stroke-width="2"/>
-        <path d="M65,42 Q70,38 75,42" fill="none" stroke="#8B4513" stroke-width="2"/>
-        
-        <!-- Boy's nose -->
-        <path d="M60,55 Q63,60 60,63" fill="none" stroke="#D4A574" stroke-width="1"/>
-        
-        <!-- Boy's smile -->
-        <path d="M50,65 Q60,72 70,65" fill="none" stroke="#333" stroke-width="2"/>
-        
-        <!-- Boy's body - shirt -->
-        <path d="M60,80 L40,120 L45,160 L75,160 L80,120 L60,80 Z" 
-              fill="#4169E1" stroke="#2E4C9E" stroke-width="1.5"/>
-        
-        <!-- Boy's collar -->
-        <path d="M55,80 L65,80 L70,85 L50,85 Z" fill="white" stroke="#2E4C9E" stroke-width="1"/>
-        
-        <!-- Boy's arms -->
-        <path d="M40,120 L25,90" stroke="#F5CBA7" stroke-width="4" stroke-linecap="round"/>
-        <path d="M80,120 L95,90" stroke="#F5CBA7" stroke-width="4" stroke-linecap="round"/>
-        
-        <!-- Hands -->
-        <circle cx="25" cy="90" r="4" fill="#F5CBA7" stroke="#D4A574" stroke-width="1"/>
-        <circle cx="95" cy="90" r="4" fill="#F5CBA7" stroke="#D4A574" stroke-width="1"/>
-        
-        <!-- Boy's legs - pants -->
-        <path d="M45,160 L40,210" stroke="#228B22" stroke-width="5" stroke-linecap="round"/>
-        <path d="M75,160 L80,210" stroke="#228B22" stroke-width="5" stroke-linecap="round"/>
-        
-        <!-- Shoes -->
-        <ellipse cx="40" cy="212" rx="7" ry="4" fill="#333"/>
-        <ellipse cx="80" cy="212" rx="7" ry="4" fill="#333"/>
-        
-        <!-- Paper with heart (only shown during walk) -->
-        <g>
-          <!-- Paper -->
-          <rect x="85" y="70" width="50" height="40" rx="8" 
-                fill="white" stroke="#333" stroke-width="1.5" 
-                filter="drop-shadow(2px 2px 4px rgba(0,0,0,0.2))"/>
-          
-          <!-- Heart on paper -->
-          <path d="M105,90 C105,85 110,85 110,90 C110,95 107,98 105,100 C103,98 100,95 100,90 C100,85 105,85 105,90 Z" 
-                fill="#ff3366" stroke="#cc0044" stroke-width="1.5"/>
-          
-          <!-- Question mark -->
-          <text x="120" y="96" text-anchor="middle" fill="black" 
-                font-size="12" font-weight="bold" font-family="Arial">?</text>
-        </g>
-      </svg>
+      <img *ngIf="showProposalText"
+        [src]="boySvgPath" 
+        alt="Boy" 
+        class="h-auto"
+        [class.w-[140px]]="isMobile"
+        [class.w-[270px]]="!isMobile"
+      />
+      <img *ngIf="!showProposalText"
+        [src]="boyRunSvgPath" 
+        alt="BoyRun" 
+        class="h-auto"
+        [class.w-[180px]]="isMobile"
+        [class.w-[355px]]="!isMobile"
+      />
     </div>
   </div>
   
   <!-- Proposal text and buttons (shown after animation) -->
-  <div *ngIf="showProposalText" class="absolute inset-0 flex flex-col items-center justify-center z-20 animate-fade-in px-4">
+  <div *ngIf="showProposalText" class="absolute inset-0 flex flex-col items-center pt-[45%] md:pt-[unset] md:top-[25%] z-20 animate-fade-in px-4">
     <div class="text-center mb-8 md:mb-12 px-2">
       <h1 class="text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-bold text-black mb-4 md:mb-6 font-serif tracking-wide">
         Zostaniesz moją walentynką?
       </h1>
     </div>
     
-    <div class="flex flex-col md:flex-row gap-6 md:gap-10 items-center w-full max-w-4xl">
+    <div class="flex flex-col md:flex-row gap-6 md:gap-10 items-center justify-center w-full max-w-4xl">
       <!-- Yes Button -->
       <button 
         (click)="onYesClick()"
@@ -191,7 +99,7 @@
   <div *ngIf="!showProposalText" class="absolute bottom-6 left-0 right-0 text-center z-10 px-4">
     <div class="inline-block bg-white/90 backdrop-blur-sm px-4 py-3 rounded-full shadow-lg">
       <p class="text-gray-700 text-base md:text-lg font-medium">
-        <span class="animate-pulse inline-block">💖</span> Zobacz jak ten chłopiec idzie z walentynką...
+        <span class="animate-pulse inline-block">💖</span> Zobacz jak biegnę z walentynką...
       </p>
     </div>
   </div>

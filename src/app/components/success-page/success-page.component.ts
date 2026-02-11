@@ -7,9 +7,23 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SuccessPageComponent implements OnInit {
   successHearts: any[] = [];
+  isMobile = false;
   
+  togetherPath = 'assets/together.png';
+
   ngOnInit(): void {
+    this.checkIfMobile();
     this.createSuccessHearts();
+
+    window.addEventListener('resize', () => this.checkIfMobile());
+  }
+
+  ngOnDestroy(): void {
+    window.removeEventListener('resize', () => this.checkIfMobile());
+  }
+
+  checkIfMobile(): void {
+    this.isMobile = window.innerWidth <= 768;
   }
   
   createSuccessHearts(): void {
@@ -18,8 +32,9 @@ export class SuccessPageComponent implements OnInit {
       '#ff3366', '#ff6699', '#ff3366', '#ff0066', 
       '#ff99cc', '#ff66aa', '#ff3388', '#ff0077'
     ];
-    
-    for (let i = 0; i < 30; i++) {
+
+    const heartCount = this.isMobile ? 50 : 150;
+    for (let i = 0; i < heartCount; i++) {
       this.successHearts.push({
         style: {
           left: `${Math.random() * 100}%`,

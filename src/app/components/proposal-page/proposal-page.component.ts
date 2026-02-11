@@ -17,6 +17,11 @@ export class ProposalPageComponent implements OnInit {
   isExploding = false;
   isMobile = false;
   
+    // SVG paths
+  boySvgPath = 'assets/boy.png';
+  boyRunSvgPath = 'assets/boy-run.png';
+  girlSvgPath = 'assets/girl.png';
+
   // Floating hearts for background
   floatingHearts: any[] = [];
   
@@ -34,7 +39,7 @@ export class ProposalPageComponent implements OnInit {
       this.showProposalText = true;
       // Set initial position for No button
       setTimeout(() => this.setInitialNoButtonPosition(), 100);
-    }, 9000);
+    }, 5000);
     
     // Handle window resize
     window.addEventListener('resize', () => this.checkIfMobile());
@@ -50,7 +55,7 @@ export class ProposalPageComponent implements OnInit {
   
   createFloatingHearts(): void {
     // Create floating hearts with random positions and animations
-    const heartCount = this.isMobile ? 30 : 90;
+    const heartCount = this.isMobile ? 50 : 150;
     
     for (let i = 0; i < heartCount; i++) {
       this.floatingHearts.push({
@@ -61,7 +66,7 @@ export class ProposalPageComponent implements OnInit {
           height: `${this.isMobile ? 15 : 20 + Math.random() * 40}px`,
           animation: `float ${6 + Math.random() * 10}s ease-in-out infinite`,
           animationDelay: `${Math.random() * 5}s`,
-          color: `rgba(255, ${100 + Math.random() * 155}, ${150 + Math.random() * 105}, 1)`
+          color: `rgba(255, ${50 + Math.random() * 155}, ${180 + Math.random() * 75}, 1)`
         }
       });
     }
@@ -85,7 +90,7 @@ export class ProposalPageComponent implements OnInit {
   onNoClick(): void {
     this.noButtonClicks++;
     
-    if (this.noButtonClicks >= 3) {
+    if (this.noButtonClicks >= 5) {
       this.isExploding = true;
     } else {
       this.moveNoButtonRandomly();
