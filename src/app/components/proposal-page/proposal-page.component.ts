@@ -39,7 +39,7 @@ export class ProposalPageComponent implements OnInit {
       this.showProposalText = true;
       // Set initial position for No button
       setTimeout(() => this.setInitialNoButtonPosition(), 100);
-    }, 5000);
+    }, 4050);
     
     // Handle window resize
     window.addEventListener('resize', () => this.checkIfMobile());
